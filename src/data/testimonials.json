@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Smith",
+    "role": "Customer",
+    "photo": "/images/alice.jpg",
+    "feedback": "Great service! Very professional and friendly."
+  },
+  {
+    "id": 2,
+    "name": "Bob Lee",
+    "role": "Customer",
+    "photo": "/images/bob.jpg",
+    "feedback": "Loved the experience, highly recommend this business."
+  },
+  {
+    "id": 3,
+    "name": "Cathy Johnson",
+    "role": "Customer",
+    "photo": "/images/cathy.jpg",
+    "feedback": "The customer support was top notch."
+  },
+    {
+    "id": 4,
+    "name": "David Brown",
+    "role": "Customer",
+    "photo": "/images/david.jpg",
+    "feedback": "An unforgettable experience from start to finish."
+  }
+]
