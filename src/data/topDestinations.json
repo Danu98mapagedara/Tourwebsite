@@ -3,21 +3,21 @@
 [
   {
     "id": 1,
-    "name": "Sigiriya Rock Fortress",
+    "name": "Kandy Tour",
     "location": "Dambulla, Sri Lanka",
     "image": "src/assets/kandy.jpg",
     "description": "An ancient rock fortress and UNESCO World Heritage site."
   },
   {
     "id": 2,
-    "name": "Ella",
+    "name": "Jaffna Tour",
     "location": "Uva Province, Sri Lanka",
     "image": "src/assets/jaffna.jpg",
     "description": "A beautiful mountain town famous for hiking and scenic views."
   },
   {
     "id": 3,
-    "name": "Galle Fort",
+    "name": "Anuradhapura Tour",
     "location": "Galle, Sri Lanka",
     "image": "src/assets/anuradhapura.jpg",
     "description": "Historic colonial fort on the southern coast."

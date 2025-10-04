@@ -2,8 +2,7 @@
 import homeimage from '../assets/home.jpg'
 import About from '../components/About'
 import DestinationCard from '../components/DestinationCard'
-
-import destinations from '../data/topDestinations.json'
+import { tours } from '../data/tours'
 const Home = () => {
   return (
     <div className='px-3  w-full position-relative h-auto  '>
@@ -17,7 +16,7 @@ const Home = () => {
         <div className='text-center mt-3 text-gray-600'>Discover amazing places at exclusive deals more than 100000 + around  the  world  </div>
 
        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5'>
-         {destinations.map(destination =>(
+         {tours.map(destination =>(
             <DestinationCard key={destination.id} {...destination} />
         ))
   
