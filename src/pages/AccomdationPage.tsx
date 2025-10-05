@@ -11,9 +11,17 @@ const AccomdationPage = () => {
   
 
 const handleSearch=(location:string,star:number|undefined,selectedPrice:string)=>{
+ 
+  const filteredAccommodations: Accommodation[] = accommodations.filter((accommodation) => {
+    const matchesLocation = accommodation.location.toLocaleLowerCase().includes(location.toLocaleLowerCase());
+    const matchesStar = star ? accommodation.stars === star : true;
+    const matchesPrice=selectedPrice? accommodation.price  
+   
 
+   
+  });
 
-
+  console.log("Filtered Accommodations:", filteredAccommodations);
 }
 
   return (

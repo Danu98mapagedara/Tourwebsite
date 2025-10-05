@@ -14,7 +14,7 @@ export const accommodations: Accommodation[] = [
     name: "Rivora Residence",
     location: "Kandy",
     stars: 4,
-    pricePerNight: 17138,
+    pricePerNight: 17000,
     facilities: ["Breakfast included", "Free cancellation", "24/7 Service"],
     image: "/assets/kandy-hotel.jpg"
   },
