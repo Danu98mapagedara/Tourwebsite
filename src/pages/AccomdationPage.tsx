@@ -1,27 +1,42 @@
 
 import { useState } from "react"
 import  {accommodations} from "../data/accommodation"
-import type  { Accommodation} from "../data/accommodation";;
+import type  { Accommodation} from "../data/accommodation";import AccommodationCard from "@/components/AccommodationCard";
+;
 
 const AccomdationPage = () => {
 
   const [location, setLocation] = useState<string>("");
-  const[star,setStar]=useState<number>();
+  const[selectedStar,setStar]=useState<number>();
   const [selectedPrice, setSelectedPrice] = useState<string>("");
-  
+  const [filteredAccommodations, setFilteredAccommodations] = useState<Accommodation[]>(accommodations); // ✅ store results here
+
 
 const handleSearch=(location:string,star:number|undefined,selectedPrice:string)=>{
  
-  const filteredAccommodations: Accommodation[] = accommodations.filter((accommodation) => {
+  const filtered = accommodations.filter((accommodation) => {
     const matchesLocation = accommodation.location.toLocaleLowerCase().includes(location.toLocaleLowerCase());
-    const matchesStar = star ? accommodation.stars === star : true;
-    const matchesPrice=selectedPrice? accommodation.price  
-   
+    const matchesStar = star ? accommodation.stars === selectedStar : true;
+    const matchesPrice = selectedPrice
+  ? selectedPrice === "low"
+    ? accommodation.price < 15000
+    : selectedPrice === "mid"
+    ? accommodation.price >= 15000 && accommodation.price <= 25000
+    : accommodation.price > 25000
+  : true;
+    return matchesLocation && matchesStar && matchesPrice;  
+    
 
-   
   });
 
+
   console.log("Filtered Accommodations:", filteredAccommodations);
+  setFilteredAccommodations(filtered);
+  // Reset filters
+   
+  setSelectedPrice("");
+  setLocation("");
+  setStar(undefined);
 }
 
   return (
@@ -46,7 +61,7 @@ const handleSearch=(location:string,star:number|undefined,selectedPrice:string)=
 
 <select className="p-4 border-3  border-yellow-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
          onChange={(e) => {setStar (Number (e.target.value)  )}}
-         value={star}
+         value={selectedStar}
          title="Star Rating"
          > 
            <option value="">Star Rating</option>
@@ -70,12 +85,19 @@ const handleSearch=(location:string,star:number|undefined,selectedPrice:string)=
         </select> 
 
         <button  className="p-4 bg-blue-950 text-white rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        onClick={()=>{handleSearch(location,star,selectedPrice)
+        onClick={()=>{handleSearch(location,selectedStar,selectedPrice)
         }}
         
         >Search</button>  
        </div>
-    </div>
+
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-10">
+          {filteredAccommodations .map((hotel) => (
+            <AccommodationCard key={hotel.id} hotel={hotel} />
+          ))}
+        </div>
+        </div>
 
 
     

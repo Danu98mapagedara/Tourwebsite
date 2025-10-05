@@ -3,7 +3,7 @@ export interface Accommodation {
   name: string
   location: string
   stars: number
-  pricePerNight: number
+  price: number
   facilities: string[]
   image: string
 }
@@ -14,7 +14,7 @@ export const accommodations: Accommodation[] = [
     name: "Rivora Residence",
     location: "Kandy",
     stars: 4,
-    pricePerNight: 17000,
+    price: 17000,
     facilities: ["Breakfast included", "Free cancellation", "24/7 Service"],
     image: "/assets/kandy-hotel.jpg"
   },
@@ -23,7 +23,7 @@ export const accommodations: Accommodation[] = [
     name: "Lake View Villa",
     location: "Kandy",
     stars: 3,
-    pricePerNight: 10500,
+    price: 10500,
     facilities: ["Free WiFi", "Air Conditioning", "Restaurant"],
     image: "/assets/lake-villa.jpg"
   },
@@ -32,7 +32,7 @@ export const accommodations: Accommodation[] = [
     name: "Palm Resort",
     location: "Jaffna",
     stars: 5,
-    pricePerNight: 25000,
+    price: 25000,
     facilities: ["Breakfast", "Swimming Pool", "Gym Access"],
     image: "/assets/jaffna-resort.jpg"
   }
