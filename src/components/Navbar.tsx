@@ -1,7 +1,7 @@
 
 import  { useState } from 'react';
-
 import { NavLink } from 'react-router-dom';
+
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
   return (
@@ -19,7 +19,7 @@ const Navbar = () => {
       >
        
         <NavLink
-          to="/tours"
+          to="/accommodation"
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
           after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >

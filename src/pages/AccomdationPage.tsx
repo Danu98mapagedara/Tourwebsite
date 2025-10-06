@@ -1,8 +1,8 @@
 
 import { useState } from "react"
 import  {accommodations} from "../data/accommodation"
-import type  { Accommodation} from "../data/accommodation";import AccommodationCard from "@/components/AccommodationCard";
-;
+import type  { Accommodation} from "../data/accommodation";
+import AccommodationCard from "@/components/AccommodationCard";;
 
 const AccomdationPage = () => {
 

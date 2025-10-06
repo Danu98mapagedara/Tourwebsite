@@ -6,6 +6,7 @@ export interface Accommodation {
   price: number
   facilities: string[]
   image: string
+  about?: string[]
 }
 
 export const accommodations: Accommodation[] = [
@@ -16,7 +17,11 @@ export const accommodations: Accommodation[] = [
     stars: 4,
     price: 17000,
     facilities: ["Breakfast included", "Free cancellation", "24/7 Service"],
-    image: "/assets/kandy-hotel.jpg"
+    image: "src/assets/h1.jpg",
+    about: ["Comfortable Accommodations: 360 Viewpoint by Queens Mount in Kandy offers family rooms with air-conditioning, private bathrooms, and modern amenities. Each room includes a work desk, TV, and free WiFi, ensuring a pleasant stay.",
+"Leisure Facilities: Guests can relax on the sun terrace or take a dip in the indoor swimming pool. Additional facilities include an outdoor seating area, balcony with scenic views, and a fitness centre.",
+"Dining Options: The hotel serves a variety of breakfast options, including continental, full English/Irish, vegetarian, vegan, halal, Asian, and more. Dining areas provide comfortable spaces for meals.",
+"Convenient Location: Located 23 km from Victoria Reservoir Kandy Seaplane Base, the hotel is close to attractions such as Kandy Museum (1.7 km) and Sri Dalada Maligawa (1.7 km). Free on-site private parking is available."]
   },
   {
     id: "2",
@@ -25,8 +30,13 @@ export const accommodations: Accommodation[] = [
     stars: 3,
     price: 10500,
     facilities: ["Free WiFi", "Air Conditioning", "Restaurant"],
-    image: "/assets/lake-villa.jpg"
+    image: "src/assets/h2.jpg",
+        about: ["Comfortable Accommodations: 360 Viewpoint by Queens Mount in Kandy offers family rooms with air-conditioning, private bathrooms, and modern amenities. Each room includes a work desk, TV, and free WiFi, ensuring a pleasant stay.",
+"Leisure Facilities: Guests can relax on the sun terrace or take a dip in the indoor swimming pool. Additional facilities include an outdoor seating area, balcony with scenic views, and a fitness centre.",
+"Dining Options: The hotel serves a variety of breakfast options, including continental, full English/Irish, vegetarian, vegan, halal, Asian, and more. Dining areas provide comfortable spaces for meals.",
+"Convenient Location: Located 23 km from Victoria Reservoir Kandy Seaplane Base, the hotel is close to attractions such as Kandy Museum (1.7 km) and Sri Dalada Maligawa (1.7 km). Free on-site private parking is available."]
   },
+
   {
     id: "3",
     name: "Palm Resort",
@@ -34,6 +44,34 @@ export const accommodations: Accommodation[] = [
     stars: 5,
     price: 25000,
     facilities: ["Breakfast", "Swimming Pool", "Gym Access"],
-    image: "/assets/jaffna-resort.jpg"
+    image: "src/assets/h3.jpg"
+  },
+  {
+    id: "4",
+    name: "Ocean View Hotel",
+    location: "Jaffna",
+    stars: 4,
+    price: 25000,
+    facilities: ["Breakfast", "Swimming Pool", "Gym Access"],
+    image: "src/assets/h2.jpg"
+  },
+  {
+    id: "5",
+    name: "Heritance Kandalama",
+    location: "Anuradhapura",
+    stars: 5,
+    price: 30000,
+    facilities: ["Breakfast", "Swimming Pool", "Gym Access"],
+    image: "src/assets/h1.jpg"
+  },
+  {
+    id: "6",
+    name: "Cinnamon Grand",
+    location: "Kandy",
+    stars: 5,
+    price: 35000,
+    facilities: ["Spa", "Free WiFi", "Airport Shuttle"],
+    image: "src/assets/h2.jpg"
   }
+
 ]
