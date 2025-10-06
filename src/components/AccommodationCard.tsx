@@ -1,6 +1,7 @@
 
 import type  {Accommodation} from '../data/accommodation';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
+
 type  AccommodationProps = {
     hotel: Accommodation
 }
@@ -8,15 +9,11 @@ type  AccommodationProps = {
 
 
 const AccommodationCard: React.FC<AccommodationProps> = ({ hotel }) => {
-  const handleNavigate=(id:string)=>{
-  const navigate=useNavigate();
-  navigate(`/accommodation/${id}`);
-}
-
   return (
     <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-shadow">
-      <img src={hotel.image} alt={hotel.name} className="w-full h-48 object-cover" />
-      
+      <img src={hotel.image[0]}  alt={hotel.name} className="w-full h-48 object-cover" />
+   
+
       <div className="p-4 flex justify-between items-start">
         <div className="">
         <h3 className="text-xl font-semibold">{hotel.name}</h3>
