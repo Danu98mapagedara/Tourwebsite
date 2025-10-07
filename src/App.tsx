@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import TourPage from './pages/TourPage';
 import AccomdationPage from './pages/AccomdationPage';
 import AvailabilityPage from './pages/AvailabilityPage';
+import GetYourRoute from './pages/GetYourRoute';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
            <Route path="/tour/:id" element={<TourPage/>} />
           <Route path="/accommodation" element={<AccomdationPage/>} />  
           <Route path="/accommodation/:id" element={<AvailabilityPage/>} />  
+           <Route path="/getyourroute" element={<GetYourRoute/>} />
         </Routes>
           {/* <Footer/>  */}
       </Router>

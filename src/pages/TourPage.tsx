@@ -1,5 +1,5 @@
 
-import  { useParams } from 'react-router-dom'
+import  { NavLink, useParams } from 'react-router-dom'
 import {  tours } from '@/data/tours'
 import type {Tour} from '@/data/tours'
 
@@ -40,7 +40,10 @@ const TourPage = () => {
                         </ul>
   </div>
   <div>
+    <NavLink to={`/accommodation`}>
     <button className="p-2 bg-purple-600 text-white rounded-lg position-absolute mt-15 w-1/2 cursor-pointer ">Get your Vehicle & Accommodation Reservation</button>
+           </NavLink >                 
+    
   </div>
  <div>
   
