@@ -2,11 +2,13 @@ import type  {Accommodation } from '../data/accommodation'
 import  {accommodations} from '../data/accommodation'
 import  {useParams} from 'react-router-dom'
 import { FaMapMarkerAlt, FaHeart, FaShareAlt } from "react-icons/fa";
-
+import { useNavigate } from 'react-router-dom';
 
 
 const AvailabilityPage = () => {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
+  
  const availabletour:Accommodation|undefined=accommodations.find((a)=>a.id===id)
 
  if (!availabletour) {
@@ -44,7 +46,8 @@ const AvailabilityPage = () => {
         <div className="flex items-center gap-4">
           <FaHeart className="text-blue-500 cursor-pointer" title="Add to favorites" />
           <FaShareAlt className="text-blue-500 cursor-pointer" title="Share" />
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+
+          <button onClick={() => navigate(`/reserve/${availabletour.id}`)} className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
             Reserve
           </button>
         </div>
@@ -147,7 +150,7 @@ const AvailabilityPage = () => {
       <li>Free private parking</li>
     </ul>
 
-    <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+    <button onClick={() => navigate(`/reserve/${availabletour.id}`)} className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
       Reserve
     </button>
   </div>
