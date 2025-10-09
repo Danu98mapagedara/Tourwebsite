@@ -1,42 +1,48 @@
 
 import { useState } from "react"
+import "react-datepicker/dist/react-datepicker.css";
 import  {accommodations} from "../data/accommodation"
 import type  { Accommodation} from "../data/accommodation";
-import AccommodationCard from "@/components/AccommodationCard";;
+import AccommodationCard from "@/components/AccommodationCard";
+import { addDays } from "date-fns";
+import DatePicker from "react-datepicker";
 
 const AccomdationPage = () => {
 
   const [location, setLocation] = useState<string>("");
   const[selectedStar,setStar]=useState<number>();
   const [selectedPrice, setSelectedPrice] = useState<string>("");
-  const [filteredAccommodations, setFilteredAccommodations] = useState<Accommodation[]>(accommodations); // ✅ store results here
+  const [selectedDate, setSelectedDate] = useState<string>("");
+  const [filteredAccommodations, setFilteredAccommodations] = useState<Accommodation[]>(accommodations); 
 
 
-const handleSearch=(location:string,star:number|undefined,selectedPrice:string)=>{
- 
-  const filtered = accommodations.filter((accommodation) => {
+const handleSearch=(location:string,star:number|undefined,selectedPrice:string,selectedDate:string|undefined)=>{
+
+  const filtered = accommodations.filter((accommodation): boolean => {
     const matchesLocation = accommodation.location.toLocaleLowerCase().includes(location.toLocaleLowerCase());
     const matchesStar = star ? accommodation.stars === selectedStar : true;
     const matchesPrice = selectedPrice
-  ? selectedPrice === "low"
-    ? accommodation.price < 15000
-    : selectedPrice === "mid"
-    ? accommodation.price >= 15000 && accommodation.price <= 25000
-    : accommodation.price > 25000
-  : true;
-    return matchesLocation && matchesStar && matchesPrice;  
-    
+                                     ? selectedPrice === "low"
+                                     ? accommodation.price < 15000
+                                     : selectedPrice === "mid"
+                                     ? accommodation.price >= 15000 && accommodation.price <= 25000
+                                     : accommodation.price > 25000
+                                     : true;
 
+ // New: Check booking availability
+ const matchesDate= selectedDate? 
+ !accommodation.bookedDates?.includes(selectedDate.toString().split("T")[0]):true;
+
+    return matchesLocation && matchesStar && matchesPrice && matchesDate;  
   });
-
-
+    setFilteredAccommodations(filtered);
   console.log("Filtered Accommodations:", filteredAccommodations);
-  setFilteredAccommodations(filtered);
+
   // Reset filters
-   
   setSelectedPrice("");
   setLocation("");
-  setStar(undefined);
+  setStar("");
+  setSelectedDate("");
 }
 
   return (
@@ -45,7 +51,7 @@ const handleSearch=(location:string,star:number|undefined,selectedPrice:string)=
         <h1  className="text-4xl">Find your next stay</h1>
   <p  className="text-2xl">Search low prices on hotels, homes and much more...</p>
       </div>
-       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 justify-content-center align-items-center p-10">
+       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6 justify-content-center align-items-center p-10">
       
          <select className="p-4 border-3  border-yellow-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
          onChange={(e) => {setLocation(e.target.value) }}
@@ -70,10 +76,19 @@ const handleSearch=(location:string,star:number|undefined,selectedPrice:string)=
            <option value="3">3 Star</option>
 </select>
 
-
+      <div>
+        <DatePicker className="p-4 border-3  border-yellow-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        selected={selectedDate ? new Date(selectedDate) : null}
+        onChange={(date) => setSelectedDate(date ? date.toISOString().split("T")[0] : "")}
+        minDate={new Date()}
+        maxDate={addDays(new Date(), 30)}
+        placeholderText="Select a date"
+        />
+      </div>
+      
       
         <select
-       title="Price"
+          title="Price"
           value={selectedPrice}
           onChange={(e) => setSelectedPrice(e.target.value)}
           className="p-4 border-3  border-yellow-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -85,10 +100,7 @@ const handleSearch=(location:string,star:number|undefined,selectedPrice:string)=
         </select> 
 
         <button  className="p-4 bg-blue-950 text-white rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        onClick={()=>{handleSearch(location,selectedStar,selectedPrice)
-        }}
-        
-        >Search</button>  
+        onClick={()=>{handleSearch(location,selectedStar,selectedPrice,selectedDate) }}>Search</button>  
        </div>
 
 

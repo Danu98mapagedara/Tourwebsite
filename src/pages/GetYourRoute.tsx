@@ -98,7 +98,9 @@ const GetYourRoute = () => {
         </button>
       </div>
 
-      <div id="map" style={{ height: "500px", width: "100%", borderRadius: "12px" }}></div>
+      <div id="map" style={{ height: "500px", width: "100%", borderRadius: "12px" }}>
+        
+      </div>
     </div>
   );
 };

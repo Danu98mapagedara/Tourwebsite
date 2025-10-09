@@ -11,6 +11,7 @@ export interface Accommodation {
   address?: string
   locationText?: string
   priceMatch?: boolean
+  bookedDates?: string[] 
 }
 
 import image1  from '../assets/h1.jpg';
@@ -34,6 +35,11 @@ export const accommodations: Accommodation[] = [
     price: 17000,
     facilities: ["Breakfast included", "Free cancellation", "24/7 Service"],
     image: [image1, slideimage1, slideimage2, image3],
+      bookedDates: [
+      "2025-12-10",
+      "2025-10-09",
+      "2025-10-15" 
+    ],
     about: ["Comfortable Accommodations: 360 Viewpoint by Queens Mount in Kandy offers family rooms with air-conditioning, private bathrooms, and modern amenities. Each room includes a work desk, TV, and free WiFi, ensuring a pleasant stay.",
 "Leisure Facilities: Guests can relax on the sun terrace or take a dip in the indoor swimming pool. Additional facilities include an outdoor seating area, balcony with scenic views, and a fitness centre.",
 "Dining Options: The hotel serves a variety of breakfast options, including continental, full English/Irish, vegetarian, vegan, halal, Asian, and more. Dining areas provide comfortable spaces for meals.",
@@ -51,6 +57,11 @@ export const accommodations: Accommodation[] = [
       slideimage2
 
     ] ,
+     bookedDates: [
+      "2025-10-16",
+      "2025-10-18",
+      "2025-10-24" // these dates will not be available for booking
+    ],
         about: ["Comfortable Accommodations: 360 Viewpoint by Queens Mount in Kandy offers family rooms with air-conditioning, private bathrooms, and modern amenities. Each room includes a work desk, TV, and free WiFi, ensuring a pleasant stay.",
 "Leisure Facilities: Guests can relax on the sun terrace or take a dip in the indoor swimming pool. Additional facilities include an outdoor seating area, balcony with scenic views, and a fitness centre.",
 "Dining Options: The hotel serves a variety of breakfast options, including continental, full English/Irish, vegetarian, vegan, halal, Asian, and more. Dining areas provide comfortable spaces for meals.",
