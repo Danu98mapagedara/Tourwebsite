@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import  type { Accommodation } from '@/data/accommodation';
 import { accommodations } from '@/data/accommodation';
 import DatePicker from 'react-datepicker';
-
+import  reservation from '../assets/reservation.jpg';
 
   interface Reservation {
         Typerooom: string,
@@ -17,7 +17,7 @@ import DatePicker from 'react-datepicker';
     }
 
 
-const ReservePage = ():Reservation => {
+const ReservePage = () => {
     const { id } = useParams<{ id: string }>();
     const availabletour:Accommodation|undefined=accommodations.find((a)=>a.id===id)
 
@@ -30,11 +30,11 @@ const ReservePage = ():Reservation => {
 
 const AllPrices ={
     roomPrice: {
-        single: 10000,
+        single: 15000,
         double: 18000,
         suite: 25000
     },
-    guestperprice: 5000,
+    guestperprice: 3000,
     breakfast: 1500
 };
 useEffect(() => {
@@ -50,17 +50,16 @@ const calTotalAmount=():number=>{
 
 
   return (
-    <div className='container mx-auto p-5 mt-5 flex-column align-items-center justify-content-center bg-pink-100'>
+    <div className='container mx-auto p-5 mt-15'>
       {availabletour ? (
-        <div>
+        <div className='bg-blue-500 text-white p-4 rounded-lg mb-6'>
           <h2 className="text-2xl font-bold text-gray-900">{availabletour.name}</h2>
-        
-          <p className="text-gray-700">Price: ${availabletour.price}</p>
         </div>
       ) : (
         <div className='text-red-500 text-2xl'>Accommodation Not Found</div>
       )}
-      <div>
+      <div className='flex gap-3 mt-5 flex-col md:flex-row align-items-center justify-content-center'>
+ <div className='flex-2 bg-blue-100 p-6 rounded-lg shadow-md'>
         <h2 className="text-2xl font-bold mb-4">Reservation Form</h2>
         <form className="space-y-4">
           <div className="mb-4">
@@ -124,6 +123,11 @@ className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:b
          </div>
 </form>
     </div>
+    <div className='flex-2 mt-5 w-1/2 h-auto rounded-lg shadow-md'>
+        <img src={reservation} alt="Reservation"    />
+    </div>
+      </div>
+     
     </div>
   )
 }

@@ -21,7 +21,7 @@ function App() {
           <Route path="/accommodation" element={<AccomdationPage/>} />  
           <Route path="/accommodation/:id" element={<AvailabilityPage/>} />  
            <Route path="/getyourroute" element={<GetYourRoute/>} />
-           <Route path="/reserve" element={<ReservePage/>} />
+           <Route path="/reserve/:id" element={<ReservePage/>} />
         </Routes>
           {/* <Footer/>  */}
       </Router>
