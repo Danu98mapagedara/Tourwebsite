@@ -56,12 +56,20 @@ const vehicleSlice = createSlice({
         return matchesSeats && matchesTransmission  && matchesMileage && matchesCarType;
        });
 
-    }
-
+    },
+  clearFilters(state) {
+      state.filters = {
+        numberOfSeats: 0,
+        transmission: "",
+        mileage: "",
+        cartype: "",
+      };
+      state.filteredVehicles = state.vehicle;
+    },
     }
 
 
 })
 
-export const {setFilter,applyfilters}= vehicleSlice.actions
+export const {setFilter,applyfilters,clearFilters}= vehicleSlice.actions
 export default vehicleSlice.reducer
