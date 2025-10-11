@@ -1,7 +1,7 @@
 export  interface Vehicle{
     id: number
     name: string
-    type: string
+    cartype: string
     pricePerDay: number
     image: string
     capacity: number
@@ -12,7 +12,6 @@ export  interface Vehicle{
     bookedDates?: string[]
     numberofSeats?: number
     transmission?: string
-    fuelType?: string
     mileage?: string
     airConditioned?: boolean
 }
@@ -20,7 +19,7 @@ export  interface Vehicle{
 const vehicle: Vehicle[] = [{
     id: 1,
     name: "Toyota Corolla",
-    type: "Sedan",
+    cartype: "Sedan",
     pricePerDay: 5000,
     image: "https://example.com/toyota_corolla.jpg",
     capacity: 5,
@@ -33,14 +32,14 @@ const vehicle: Vehicle[] = [{
     bookedDates: ["2023-10-01", "2023-10-05"],
     numberofSeats: 5,
     transmission: "Automatic",
-    fuelType: "Petrol",
+  
     mileage: "30 km/l",
     airConditioned: true
 },
 {
     id: 2,
     name: "Honda CR-V",
-    type: "SUV",
+    cartype: "SUV",
     pricePerDay: 8000,
     image: "https://example.com/honda_crv.jpg",
     capacity: 7,
@@ -54,14 +53,14 @@ const vehicle: Vehicle[] = [{
     bookedDates: ["2023-10-10", "2023-10-15"],
     numberofSeats: 7,
     transmission: "Automatic",
-    fuelType: "Petrol",
+   
     mileage: "28 km/l",
     airConditioned: true
 },
 {
     id: 3,
-    name: "Ford Mustang",   
-    type: "Coupe",
+    name: "Ford Mustang",
+    cartype: "Coupe",
     pricePerDay: 12000,
     image: "https://example.com/ford_mustang.jpg",
     capacity: 4,
@@ -74,7 +73,6 @@ const vehicle: Vehicle[] = [{
     bookedDates: ["2023-11-01", "2023-11-05"],
     numberofSeats: 4,
     transmission: "Automatic",
-    fuelType: "Petrol",
     mileage: "25 km/l",
     airConditioned: true
 },
