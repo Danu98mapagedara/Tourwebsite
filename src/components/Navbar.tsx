@@ -26,11 +26,11 @@ const Navbar = () => {
           Accommodation
         </NavLink>
         <NavLink
-          to="/house"
+          to="/rides"
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
           after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
-          About  Us
+        Rides
         </NavLink>
         <NavLink
           to="/yourland"
@@ -40,11 +40,11 @@ const Navbar = () => {
           
         </NavLink>
         <NavLink
-          to="/contactus"
+          to="/getyourroute"
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
           after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
-          Contact Us
+        Get your  Route  Helper
         </NavLink>
         <NavLink
           to="/aboutus"
