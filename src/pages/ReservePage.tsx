@@ -1,136 +1,186 @@
-import  { useState ,useEffect} from 'react'
-import { useParams } from 'react-router-dom';
-import  type { Accommodation } from '@/data/accommodation';
-import { accommodations } from '@/data/accommodation';
-import DatePicker from 'react-datepicker';
-import  reservation from '../assets/reservation.jpg';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { motion } from "framer-motion";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import reservation from "../assets/reservation.jpg";
+import type { Accommodation } from "@/data/accommodation";
+import { accommodations } from "@/data/accommodation";
 
-  interface Reservation {
-        Typerooom: string,
-        Numberofguest: number,
-        checkin: string,
-        checkout: string,
-        ChargeperAdult: number,
-        ChargeperChild: number,
-        TotalAmount: number,
-        IsdinnerInclude: boolean,
-    }
-
+interface ReservationForm {
+  roomType: string;
+  numberOfGuests: number;
+  breakfastOption: string;
+}
 
 const ReservePage = () => {
-    const { id } = useParams<{ id: string }>();
-    const availabletour:Accommodation|undefined=accommodations.find((a)=>a.id===id)
+  const { id } = useParams<{ id: string }>();
+  const availabletour: Accommodation | undefined = accommodations.find((a) => a.id === id);
 
-    const [checkinDate, setCheckinDate] = useState<Date | null>(null);
-    const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
-    const [totalAmount, setTotalAmount] = useState<number>(0);
-    const [roomType, setRoomType] = useState<string>('');
-    const [numberOfGuests, setNumberOfGuests] = useState<number>(1);
-    const [breakfastOption, setBreakfastOption] = useState<string>('yes');
+  const { register, handleSubmit, watch } = useForm<ReservationForm>({
+    defaultValues: {
+      roomType: "",
+      numberOfGuests: 1,
+      breakfastOption: "yes",
+    },
+  });
 
-const AllPrices ={
+  const [checkinDate, setCheckinDate] = useState<Date | null>(null);
+  const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
+  const [totalAmount, setTotalAmount] = useState<number>(0);
+
+  const AllPrices = {
     roomPrice: {
-        single: 15000,
-        double: 18000,
-        suite: 25000
+      single: 15000,
+      double: 18000,
+      suite: 25000,
     },
     guestperprice: 3000,
-    breakfast: 1500
-};
-useEffect(() => {
-    setTotalAmount(calTotalAmount());
-}, [checkinDate, checkoutDate, roomType, numberOfGuests, breakfastOption]);
+    breakfast: 1500,
+  };
 
-const calTotalAmount=():number=>{
-    if(!checkinDate || !checkoutDate || !roomType) return 0;
-    const total= AllPrices.guestperprice * numberOfGuests + AllPrices.roomPrice[roomType] + (breakfastOption === 'yes' ? AllPrices.breakfast : 0);
-    return total;
-};
+  // Recalculate price when dependencies change
+  useEffect(() => {
+    const formValues = watch();
+    const { roomType, numberOfGuests, breakfastOption } = formValues;
+    if (!checkinDate || !checkoutDate || !roomType) {
+      setTotalAmount(0);
+      return;
+    }
+    const total =
+      AllPrices.guestperprice * numberOfGuests +
+      AllPrices.roomPrice[roomType as keyof typeof AllPrices.roomPrice] +
+      (breakfastOption === "yes" ? AllPrices.breakfast : 0);
+    setTotalAmount(total);
+  }, [watch("roomType"), watch("numberOfGuests"), watch("breakfastOption"), checkinDate, checkoutDate]);
 
+  // Submit form handler
+  const onSubmit = (data: ReservationForm) => {
+    if (!checkinDate || !checkoutDate) {
+      alert("Please select both check-in and check-out dates!");
+      return;
+    }
+    alert(
+      `✅ Reservation confirmed for ${availabletour?.name}\nRoom: ${data.roomType}\nGuests: ${data.numberOfGuests}\nBreakfast: ${data.breakfastOption}\nFrom: ${checkinDate.toDateString()} To: ${checkoutDate.toDateString()}\nTotal: Rs. ${totalAmount}`
+    );
+  };
 
+  if (!availabletour) return <div className="text-red-500 text-2xl text-center">Accommodation Not Found</div>;
 
   return (
-    <div className='container mx-auto p-5 mt-15'>
-      {availabletour ? (
-        <div className='bg-blue-500 text-white p-4 rounded-lg mb-6'>
-          <h2 className="text-2xl font-bold text-gray-900">{availabletour.name}</h2>
-        </div>
-      ) : (
-        <div className='text-red-500 text-2xl'>Accommodation Not Found</div>
-      )}
-      <div className='flex gap-3 mt-5 flex-col md:flex-row align-items-center justify-content-center'>
- <div className='flex-2 bg-blue-100 p-6 rounded-lg shadow-md'>
-        <h2 className="text-2xl font-bold mb-4">Reservation Form</h2>
-        <form className="space-y-4">
-          <div className="mb-4">
-            <div>
-   <label className="block text-gray-700">Type of Room</label>
-            <select title='Type of Room' value={roomType} onChange={(e) => setRoomType(e.target.value)} 
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-200">
+    <motion.div
+      className="container mx-auto p-8 mt-10 flex flex-col md:flex-row items-center justify-center gap-10"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      {/*  Form Section */}
+      <motion.div
+        className="bg-white p-8 rounded-2xl shadow-2xl w-full md:w-1/2"
+        initial={{ x: -100 }}
+        animate={{ x: 0 }}
+        transition={{ type: "spring", stiffness: 80 }}
+      >
+        <h2 className="text-3xl font-bold mb-6 text-blue-700">Reserve {availabletour.name}</h2>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Room Type */}
+          <div>
+            <label className="block text-gray-800 font-semibold mb-2">Type of Room</label>
+            <select
+              {...register("roomType", { required: true })}
+              className="w-full p-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 transition"
+            >
               <option value="">Select Room Type</option>
               <option value="single">Single</option>
               <option value="double">Double</option>
               <option value="suite">Suite</option>
             </select>
-            </div>
-         
-         <div>
-    <label className="block text-gray-700">Number of Guests</label>
-    <input title='Number of Guests' value={numberOfGuests} onChange={(e) => setNumberOfGuests(Number(e.target.value))} 
-    type="number" min="1" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-200" />
-         </div>
-
-         <div>
-    <label className="block text-gray-700">Check-in Date</label>
-    <DatePicker
-
-      selected={checkinDate}
-      onChange={(date) => setCheckinDate(date)}
-      minDate={new Date()}
-      maxDate={checkoutDate ? new Date(checkoutDate.getTime() - 24 * 60 * 60 * 1000) : undefined}
-      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-200"
-    />
-         </div>
-            <div>
-    <label className="block text-gray-700">Check-out Date</label>
-    <DatePicker
-        selected={checkoutDate} 
-        onChange={(date) => setCheckoutDate(date)}
-        minDate={checkinDate ? new Date(checkinDate.getTime() + 24 * 60 * 60 * 1000) : undefined}
-        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-200"
-    />
-         </div>
-
-         <div>
-    <label className="block text-gray-700">Do you  want  Breakfast</label>
-<select title='Breakfast Option' name="breakfast" value={breakfastOption} onChange={(e) => setBreakfastOption(e.target.value)}  
-className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-200">
-  <option value="yes">Yes</option>
-  <option value="no">No</option>
-</select>
-
-         </div>
           </div>
+
+          {/* Guests */}
           <div>
-    <label className="block text-gray-700">Total Amount</label>
-   <h3>${totalAmount}</h3>
+            <label className="block text-gray-800 font-semibold mb-2">Number of Guests</label>
+            <input
+              type="number"
+              min={1}
+              {...register("numberOfGuests", { valueAsNumber: true })}
+              className="w-full p-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 transition"
+            />
           </div>
+
+          {/* Check-in */}
           <div>
-    <button type="submit" className="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700 transition">
-      Confirm Reservation
-    </button>
+            <label className="block text-gray-800 font-semibold mb-2">Check-in Date</label>
+            <DatePicker
+              selected={checkinDate}
+              onChange={(date) => setCheckinDate(date)}
+              minDate={new Date()}
+              placeholderText="Select check-in date"
+              className="w-full p-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500"
+            />
+          </div>
 
-         </div>
-</form>
-    </div>
-    <div className='flex-2 mt-5 w-1/2 h-auto rounded-lg shadow-md'>
-        <img src={reservation} alt="Reservation"    />
-    </div>
-      </div>
-     
-    </div>
-  )
-}
+          {/* Check-out */}
+          <div>
+            <label className="block text-gray-800 font-semibold mb-2">Check-out Date</label>
+            <DatePicker
+              selected={checkoutDate}
+              onChange={(date) => setCheckoutDate(date)}
+              minDate={checkinDate ? new Date(checkinDate.getTime() + 24 * 60 * 60 * 1000) : new Date()}
+              placeholderText="Select check-out date"
+              className="w-full p-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500"
+            />
+          </div>
 
+          {/* Breakfast */}
+          <div>
+            <label className="block text-gray-800 font-semibold mb-2">Do you want Breakfast?</label>
+            <select
+              {...register("breakfastOption")}
+              className="w-full p-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 transition"
+            >
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
 
-export default ReservePage
+          {/* Total Amount */}
+          <div className="mt-4">
+            <label className="block text-gray-800 font-semibold mb-2">Total Amount</label>
+            <p className="text-2xl font-bold text-green-700">Rs. {totalAmount.toLocaleString()}</p>
+          </div>
+
+          {/* Button */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            type="submit"
+            className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition"
+          >
+            Confirm Reservation
+          </motion.button>
+        </form>
+      </motion.div>
+
+      {/* 🖼️ Image Section */}
+      <motion.div
+        className="w-full md:w-1/2 flex justify-center"
+        initial={{ x: 100 }}
+        animate={{ x: 0 }}
+        transition={{ type: "spring", stiffness: 80 }}
+      >
+        <motion.img
+          src={reservation}
+          alt="Reservation"
+          className="rounded-2xl shadow-2xl w-[90%]"
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.4 }}
+        />
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default ReservePage;
