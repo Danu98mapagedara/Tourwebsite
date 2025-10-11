@@ -30,7 +30,7 @@ const Navbar = () => {
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
           after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
-        Rides
+       Car Rentals
         </NavLink>
         <NavLink
           to="/yourland"
@@ -44,7 +44,7 @@ const Navbar = () => {
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
           after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
-        Get your  Route  Helper
+      Map
         </NavLink>
         <NavLink
           to="/aboutus"
@@ -53,13 +53,7 @@ const Navbar = () => {
         >
           About Us
         </NavLink>
-        <NavLink
-          to="/sellyourland"
-          className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
-          after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
-        >
-          Sell Your Property
-        </NavLink>
+       
       </div>
 
       {/* Hamburger */}
