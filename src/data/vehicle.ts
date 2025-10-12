@@ -16,12 +16,17 @@ export  interface Vehicle{
     airConditioned?: boolean
 }
 
+import car1 from '../assets/car1.jpeg'
+import car2 from '../assets/car2.jpeg'
+import car3 from '../assets/car3.jpeg'
+
+
 const vehicle: Vehicle[] = [{
     id: 1,
     name: "Toyota Corolla",
     cartype: "small",
     pricePerDay: 5000,
-    image: "https://example.com/toyota_corolla.jpg",
+    image: car1,
     capacity: 5,
     features: ["Air Conditioning", "Automatic Transmission", "Bluetooth"],
     about: [
@@ -30,8 +35,8 @@ const vehicle: Vehicle[] = [{
     rating: 4.5,
     location: "New York",
     bookedDates: ["2023-10-01", "2023-10-05"],
-    numberofSeats: 5,
-    transmission: "Automatic",
+    numberofSeats: 6,
+    transmission: "automatic",
     mileage: "limited",
     airConditioned: true
 },
@@ -40,7 +45,7 @@ const vehicle: Vehicle[] = [{
     name: "Honda CR-V",
     cartype: "suv",
     pricePerDay: 8000,
-    image: "https://example.com/honda_crv.jpg",
+    image: car2,
     capacity: 7,
 
     features: ["All-Wheel Drive", "Sunroof", "Navigation System"],
@@ -51,7 +56,7 @@ const vehicle: Vehicle[] = [{
     location: "Los Angeles",
     bookedDates: ["2023-10-10", "2023-10-15"],
     numberofSeats: 7,
-    transmission: "Automatic",
+    transmission: "automatic",
     mileage: "limited",
     airConditioned: true
 },
@@ -60,7 +65,7 @@ const vehicle: Vehicle[] = [{
     name: "Ford Mustang",
     cartype: "large",
     pricePerDay: 12000,
-    image: "https://example.com/ford_mustang.jpg",
+    image: car3,
     capacity: 4,
     features: ["V8 Engine", "Leather Seats", "Premium Sound System"],
     about: [    
@@ -71,6 +76,63 @@ const vehicle: Vehicle[] = [{
     bookedDates: ["2023-11-01", "2023-11-05"],
     numberofSeats: 4,
     transmission: "Automatic",
+    mileage: "unlimited",
+    airConditioned: true
+},
+{
+    id: 4,
+    name: "Ford Mustang",
+    cartype: "large",
+    pricePerDay: 12000,
+    image: car3,
+    capacity: 4,
+    features: ["V8 Engine", "Leather Seats", "Premium Sound System"],
+    about: [    
+        "The Ford Mustang is a classic American muscle car known for its powerful performance and iconic design.",
+    ],  
+    rating: 4.8,
+    location: "Miami",
+    bookedDates: ["2023-11-01", "2023-11-05"],
+    numberofSeats: 4,
+    transmission: "automatic",
+    mileage: "unlimited",
+    airConditioned: true
+},
+{
+    id: 5,
+    name: "Ford Mustang",
+    cartype: "large",
+    pricePerDay: 12000,
+    image: car3,
+    capacity: 4,
+    features: ["V8 Engine", "Leather Seats", "Premium Sound System"],
+    about: [    
+        "The Ford Mustang is a classic American muscle car known for its powerful performance and iconic design.",
+    ],  
+    rating: 4.8,
+    location: "Miami",
+    bookedDates: ["2023-11-01", "2023-11-05"],
+    numberofSeats: 6,
+    transmission: "manual",
+    mileage: "unlimited",
+    airConditioned: true
+},
+{
+    id: 6,
+    name: "Ford Mustang",
+    cartype: "large",
+    pricePerDay: 12000,
+    image: car3,
+    capacity: 4,
+    features: ["V8 Engine", "Leather Seats", "Premium Sound System"],
+    about: [    
+        "The Ford Mustang is a classic American muscle car known for its powerful performance and iconic design.",
+    ],  
+    rating: 4.8,
+    location: "Miami",
+    bookedDates: ["2023-11-01", "2023-11-05"],
+    numberofSeats: 6,
+    transmission: "manual",
     mileage: "unlimited",
     airConditioned: true
 },

@@ -5,11 +5,10 @@ import { createSlice} from '@reduxjs/toolkit';
 import  type{ PayloadAction } from '@reduxjs/toolkit';
 
 interface FilterState{
-    numberOfSeats: number
+    numberofSeats: number
     transmission: string
     mileage: string
     cartype: string 
-   
 }
 
 interface VehicleState{
@@ -23,7 +22,7 @@ const initialState:VehicleState = {
     filteredVehicles: vehicleData,
     filters:{
     cartype: "",
-  numberOfSeats: 0,
+    numberofSeats: 0,
     transmission: "",
     mileage: "",
     }
@@ -37,15 +36,23 @@ const vehicleSlice = createSlice({
       action: PayloadAction<{  key: keyof FilterState; value: FilterState[keyof FilterState] }>
     ) => {
      state.filters[action.payload.key] = action.payload.value;
+
+       // optional: immediately re-apply filters for UX (so UI updates automatically)
+      const { numberofSeats, transmission, mileage, cartype } = state.filters;
+      state.filteredVehicles = state.vehicle.filter((veh) => {
+        const matchesSeats = numberofSeats ? veh.numberofSeats === numberofSeats : true;
+        const matchesTransmission = transmission ? veh.transmission === transmission : true;
+        const matchesMileage = mileage ? veh.mileage === mileage : true;
+        const matchesCarType = cartype ? veh.cartype === cartype : true;
+        return matchesSeats && matchesTransmission && matchesMileage && matchesCarType;
+      });
     },
 
     applyfilters:(state)=>{
-       const{  numberOfSeats,transmission,mileage,cartype} =state.filters
-   
+       const{numberofSeats,transmission,mileage,cartype} =state.filters
        state.filteredVehicles=state.vehicle.filter((vehicledetails)=>{
-        const matchesSeats=numberOfSeats ? vehicledetails.numberofSeats ===numberOfSeats:true;
+        const matchesSeats=numberofSeats ? vehicledetails.numberofSeats ===numberofSeats:true;
         const matchesTransmission=transmission? vehicledetails.transmission===transmission:true;
-       
         const matchesMileage=mileage? vehicledetails.mileage===mileage:true;
         const matchesCarType=cartype? vehicledetails.cartype===cartype:true;
 
@@ -55,7 +62,7 @@ const vehicleSlice = createSlice({
     },
   clearFilters(state) {
       state.filters = {
-        numberOfSeats: 0,
+        numberofSeats: 0,
         transmission: "",
         mileage: "",
         cartype: "",
@@ -63,8 +70,6 @@ const vehicleSlice = createSlice({
       state.filteredVehicles = state.vehicle;
     },
     }
-
-
 })
 
 export const {setFilter,applyfilters,clearFilters}= vehicleSlice.actions
