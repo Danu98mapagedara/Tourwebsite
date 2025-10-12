@@ -36,20 +36,7 @@ const vehicleSlice = createSlice({
       action: PayloadAction<{  key: keyof FilterState; value: FilterState[keyof FilterState] }>
     ) => {
      state.filters[action.payload.key] = action.payload.value;
-
-       // optional: immediately re-apply filters for UX (so UI updates automatically)
-      const { numberofSeats, transmission, mileage, cartype } = state.filters;
-      state.filteredVehicles = state.vehicle.filter((veh) => {
-        const matchesSeats = numberofSeats ? veh.numberofSeats === numberofSeats : true;
-        const matchesTransmission = transmission ? veh.transmission === transmission : true;
-        const matchesMileage = mileage ? veh.mileage === mileage : true;
-        const matchesCarType = cartype ? veh.cartype === cartype : true;
-        return matchesSeats && matchesTransmission && matchesMileage && matchesCarType;
-      });
-    },
-
-    applyfilters:(state)=>{
-       const{numberofSeats,transmission,mileage,cartype} =state.filters
+     const{numberofSeats,transmission,mileage,cartype} =state.filters
        state.filteredVehicles=state.vehicle.filter((vehicledetails)=>{
         const matchesSeats=numberofSeats ? vehicledetails.numberofSeats ===numberofSeats:true;
         const matchesTransmission=transmission? vehicledetails.transmission===transmission:true;
@@ -58,7 +45,6 @@ const vehicleSlice = createSlice({
 
         return matchesSeats && matchesTransmission  && matchesMileage && matchesCarType;
        });
-
     },
   clearFilters(state) {
       state.filters = {
@@ -72,5 +58,5 @@ const vehicleSlice = createSlice({
     }
 })
 
-export const {setFilter,applyfilters,clearFilters}= vehicleSlice.actions
+export const {setFilter,clearFilters}= vehicleSlice.actions
 export default vehicleSlice.reducer

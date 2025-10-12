@@ -25,6 +25,7 @@ const vehicles=useSelector((state:RootState)=>state.vehicles.filteredVehicles);
           <p>Transmission: {vehicle.transmission}</p>
           <p>Seats: {vehicle.numberofSeats}</p>
           <p>Price per day: Rs. {vehicle.pricePerDay}</p>
+          <button className="p-2 bg-blue-600 text-white ">Book</button>
         </div>
       ))
     ) : (
