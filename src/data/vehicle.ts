@@ -19,7 +19,7 @@ export  interface Vehicle{
 const vehicle: Vehicle[] = [{
     id: 1,
     name: "Toyota Corolla",
-    cartype: "Sedan",
+    cartype: "small",
     pricePerDay: 5000,
     image: "https://example.com/toyota_corolla.jpg",
     capacity: 5,
@@ -32,14 +32,13 @@ const vehicle: Vehicle[] = [{
     bookedDates: ["2023-10-01", "2023-10-05"],
     numberofSeats: 5,
     transmission: "Automatic",
-  
-    mileage: "30 km/l",
+    mileage: "limited",
     airConditioned: true
 },
 {
     id: 2,
     name: "Honda CR-V",
-    cartype: "SUV",
+    cartype: "suv",
     pricePerDay: 8000,
     image: "https://example.com/honda_crv.jpg",
     capacity: 7,
@@ -53,14 +52,13 @@ const vehicle: Vehicle[] = [{
     bookedDates: ["2023-10-10", "2023-10-15"],
     numberofSeats: 7,
     transmission: "Automatic",
-   
-    mileage: "28 km/l",
+    mileage: "limited",
     airConditioned: true
 },
 {
     id: 3,
     name: "Ford Mustang",
-    cartype: "Coupe",
+    cartype: "large",
     pricePerDay: 12000,
     image: "https://example.com/ford_mustang.jpg",
     capacity: 4,
@@ -73,7 +71,7 @@ const vehicle: Vehicle[] = [{
     bookedDates: ["2023-11-01", "2023-11-05"],
     numberofSeats: 4,
     transmission: "Automatic",
-    mileage: "25 km/l",
+    mileage: "unlimited",
     airConditioned: true
 },
 ]

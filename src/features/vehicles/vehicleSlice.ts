@@ -4,11 +4,9 @@ import  vehicleData from '../../data/vehicle'
 import { createSlice} from '@reduxjs/toolkit';
 import  type{ PayloadAction } from '@reduxjs/toolkit';
 
-
 interface FilterState{
-     numberOfSeats: number
+    numberOfSeats: number
     transmission: string
- 
     mileage: string
     cartype: string 
    
@@ -27,12 +25,10 @@ const initialState:VehicleState = {
     cartype: "",
   numberOfSeats: 0,
     transmission: "",
-
     mileage: "",
     }
 }
 const vehicleSlice = createSlice({
-
     name: 'vehicles',
     initialState,
     reducers: {
