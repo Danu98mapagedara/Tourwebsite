@@ -23,14 +23,14 @@ const Navbar = () => {
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
           after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
-          Accommodation
+        Hotels
         </NavLink>
         <NavLink
           to="/rides"
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
           after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
-       Car Rentals
+      Vehicles
         </NavLink>
         <NavLink
           to="/yourland"
@@ -42,9 +42,9 @@ const Navbar = () => {
         <NavLink
           to="/getyourroute"
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
-          after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+          after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300  text-1xl"
         >
-      Map
+          Get  your  Route
         </NavLink>
         <NavLink
           to="/aboutus"

@@ -24,7 +24,7 @@ const Homeswiper = () => {
 
     {/* Centered Text Content */}
     <div className="relative z-10 text-center text-white px-6">
-      <h1 className="text-3xl font-bold mb-2">Traveler exploring Sri Lanka</h1>
+      <h1 className="text-8xl font-bold mb-2">Traveler exploring Sri Lanka</h1>
       <p className="text-lg">
         Experience the breathtaking landscapes and rich culture of Sri Lanka.
       </p>
@@ -46,7 +46,7 @@ const Homeswiper = () => {
 
     {/* Centered Text Content */}
     <div className="relative z-10 text-center text-white px-6">
-      <h1 className="text-3xl font-bold mb-2">Traveler exploring Sri Lanka</h1>
+      <h1 className="text-8xl font-bold mb-2">Traveler exploring Sri Lanka</h1>
       <p className="text-lg">
         Experience the breathtaking landscapes and rich culture of Sri Lanka.
       </p>
@@ -68,7 +68,7 @@ const Homeswiper = () => {
 
     {/* Centered Text Content */}
     <div className="relative z-10 text-center text-white px-6">
-      <h1 className="text-3xl font-bold mb-2">Traveler exploring Sri Lanka</h1>
+      <h1 className="text-8xl font-bold mb-2">Traveler exploring Sri Lanka</h1>
       <p className="text-lg">
         Experience the breathtaking landscapes and rich culture of Sri Lanka.
       </p>
