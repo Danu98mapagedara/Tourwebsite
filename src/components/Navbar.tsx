@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
   return (
-     <div className="fixed top-0 left-0 w-full bg-blue-950 shadow-md flex items-center justify-between  z-50">
+     <div className="fixed top-0 left-0 w-full bg-blue-950 shadow-md flex items-center justify-between  z-50 overflow-hidden">
       {/* Logo */}
       <div className="w-12 h-12 rounded-full overflow-hidden transition-transform duration-300 hover:scale-110">
         {/* <img src="/logo.png" alt="Logo" /> */}
