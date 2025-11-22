@@ -7,6 +7,8 @@ import AccomdationPage from './pages/AccomdationPage';
 import AvailabilityPage from './pages/AvailabilityPage';
 import GetYourRoute from './pages/GetYourRoute';
 import ReservePage from './pages/ReservePage';
+import RentalPage from './pages/RentalPage';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -22,8 +24,9 @@ function App() {
           <Route path="/accommodation/:id" element={<AvailabilityPage/>} />  
            <Route path="/getyourroute" element={<GetYourRoute/>} />
            <Route path="/reserve/:id" element={<ReservePage/>} />
+           <Route path="/rides" element={<RentalPage/>} />
         </Routes>
-          {/* <Footer/>  */}
+          {<Footer/>}
       </Router>
 
   

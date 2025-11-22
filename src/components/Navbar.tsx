@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
   return (
-     <div className="fixed top-0 left-0 w-full bg-blue-950 shadow-md flex items-center justify-between  z-50">
+     <div className="fixed top-0 left-0 w-full bg-blue-950 shadow-md flex items-center justify-between  z-50 overflow-hidden">
       {/* Logo */}
       <div className="w-12 h-12 rounded-full overflow-hidden transition-transform duration-300 hover:scale-110">
         {/* <img src="/logo.png" alt="Logo" /> */}
@@ -23,14 +23,14 @@ const Navbar = () => {
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
           after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
-          Accommodation
+        Hotels
         </NavLink>
         <NavLink
           to="/rides"
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
           after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
         >
-        Rides
+      Vehicles
         </NavLink>
         <NavLink
           to="/yourland"
@@ -42,9 +42,9 @@ const Navbar = () => {
         <NavLink
           to="/getyourroute"
           className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
-          after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+          after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300  text-1xl"
         >
-        Get your  Route  Helper
+          Get  your  Route
         </NavLink>
         <NavLink
           to="/aboutus"
@@ -53,13 +53,7 @@ const Navbar = () => {
         >
           About Us
         </NavLink>
-        <NavLink
-          to="/sellyourland"
-          className="relative text-white font-medium hover:text-blue-500 transition-colors duration-300
-          after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-[-3px] after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
-        >
-          Sell Your Property
-        </NavLink>
+       
       </div>
 
       {/* Hamburger */}
