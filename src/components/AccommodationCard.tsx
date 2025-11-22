@@ -5,9 +5,6 @@ import { NavLink} from 'react-router-dom';
 type  AccommodationProps = {
     hotel: Accommodation
 }
-
-
-
 const AccommodationCard: React.FC<AccommodationProps> = ({ hotel }) => {
   return (
     <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-shadow">

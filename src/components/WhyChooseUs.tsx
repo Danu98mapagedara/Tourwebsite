@@ -1,5 +1,5 @@
 import React from "react";
-import  q from '../assets/q.jpg'
+
 const WhyChooseUs: React.FC = () => {
   return (
     <section className="py-16 px-6 md:px-16 bg-gray-50">
@@ -38,7 +38,7 @@ const WhyChooseUs: React.FC = () => {
 
         <div>
           <img
-            src={q}
+           
             className="rounded-2xl shadow-lg w-full h-[400px] object-cover"
             title="cvv"
           />

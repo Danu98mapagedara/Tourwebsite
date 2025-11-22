@@ -9,6 +9,8 @@ import GetYourRoute from './pages/GetYourRoute';
 import ReservePage from './pages/ReservePage';
 import RentalPage from './pages/RentalPage';
 import Footer from './components/Footer';
+import BookingForm from './components/BookingForm';
+import PaymentPage from './components/PaymentPage';
 
 function App() {
 
@@ -25,6 +27,9 @@ function App() {
            <Route path="/getyourroute" element={<GetYourRoute/>} />
            <Route path="/reserve/:id" element={<ReservePage/>} />
            <Route path="/rides" element={<RentalPage/>} />
+           <Route path="/booking/:id" element={<BookingForm />} />
+        <Route path="/payment/:id" element={<PaymentPage />} />
+        
         </Routes>
           {<Footer/>}
       </Router>

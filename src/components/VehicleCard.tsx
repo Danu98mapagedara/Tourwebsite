@@ -1,12 +1,13 @@
 
-import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../app/store";
 import type { Vehicle } from "../data/vehicle";
 
 const VehicleCard = () => {
-const dispatch=useDispatch<AppDispatch>();
-const vehicles=useSelector((state:RootState)=>state.vehicles.filteredVehicles);
 
+const vehicles=useSelector((state:RootState)=>state.vehicles.filteredVehicles);
+const navigate=useNavigate();
   return (
     <div className="grid grid-cols-3 gap-4">
     {vehicles.length > 0 ? (
@@ -25,7 +26,10 @@ const vehicles=useSelector((state:RootState)=>state.vehicles.filteredVehicles);
           <p>Transmission: {vehicle.transmission}</p>
           <p>Seats: {vehicle.numberofSeats}</p>
           <p>Price per day: Rs. {vehicle.pricePerDay}</p>
-          <button className="p-2 bg-blue-600 text-white ">Book</button>
+            <button
+            onClick={() => navigate(`/booking/${vehicle.id}`)}
+            className="p-2 bg-blue-600 text-white mt-2"
+          >Book</button>
         </div>
       ))
     ) : (

@@ -4,7 +4,7 @@ import About from '../components/About'
 import DestinationCard from '../components/DestinationCard'
 import { tours } from '../data/tours'
 import Homeswiper from '@/components/Homeswiper'
-import HeroSection from '@/components/HeroSection'
+// import HeroSection from '@/components/HeroSection'
 import TravelEssentials from '@/components/TravelEssentials'
 import WhyChooseUs from '@/components/WhyChooseUs'
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
       <div className='home-banner'>
       <Homeswiper/>
       </div>
-        <HeroSection />
+        {/* <HeroSection /> */}
       <TravelEssentials />
       <WhyChooseUs/>
     <div className='h-auto bg-linear-to-t from-sky-500 to-indigo-500  align-items-center justify-content-center py-5 px-5'>
