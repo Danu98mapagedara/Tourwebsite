@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe("pk_test_your_public_key");
+const stripePromise = loadStripe("_your_public_key");
 
 const PaymentPage = () => {
   const location = useLocation();
